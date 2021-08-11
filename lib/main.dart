@@ -163,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                      (_model.homeTeam + _model.awayTeam) % 4 == 0 ? _gender(true) : 'A',
+                      (_model.homeTeam + _model.awayTeam) % 4 == 0 ? _gender : 'A',
                       style: (_model.homeTeam + _model.awayTeam) % 4 == 0
                           ? Theme.of(context).textTheme.headline4!.copyWith(color: Colors.red)
                           : Theme.of(context).textTheme.headline4,
@@ -172,7 +172,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                      (_model.homeTeam + _model.awayTeam) % 4 == 1 ? _gender(false) : 'B',
+                      (_model.homeTeam + _model.awayTeam) % 4 == 1 ? _gender : 'B',
                       style: (_model.homeTeam + _model.awayTeam) % 4 == 1
                           ? Theme.of(context).textTheme.headline4!.copyWith(color: Colors.red)
                           : Theme.of(context).textTheme.headline4,
@@ -181,7 +181,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                      (_model.homeTeam + _model.awayTeam) % 4 == 2 ? _gender(false) : 'B',
+                      (_model.homeTeam + _model.awayTeam) % 4 == 2 ? _gender : 'B',
                       style: (_model.homeTeam + _model.awayTeam) % 4 == 2
                           ? Theme.of(context).textTheme.headline4!.copyWith(color: Colors.red)
                           : Theme.of(context).textTheme.headline4,
@@ -190,7 +190,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8.0),
                     child: Text(
-                      (_model.homeTeam + _model.awayTeam) % 4 == 3 ? _gender(true) : 'A',
+                      (_model.homeTeam + _model.awayTeam) % 4 == 3 ? _gender : 'A',
                       style: (_model.homeTeam + _model.awayTeam) % 4 == 3
                           ? Theme.of(context).textTheme.headline4!.copyWith(color: Colors.red)
                           : Theme.of(context).textTheme.headline4,
@@ -199,6 +199,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ],
               ),
             ),
+            Image.asset(_gender == 'Men' ? 'assets/images/men.png' : 'assets/images/women.png'),
             Expanded(
               child: Container(),
             ),
@@ -218,8 +219,8 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  String _gender(bool isA) {
-    if (isA)
+  String get _gender {
+    if (_model.isA)
       return _model.startWithMen ? 'Men' : 'Women';
     else
       return _model.startWithMen ? 'Women' : 'Men';

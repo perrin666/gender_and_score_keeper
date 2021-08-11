@@ -73,4 +73,12 @@ class MatchModel with ChangeNotifier {
     notifyListeners();
   }
 
+  bool get isA {
+    return (_homeTeam + _awayTeam) % 4 == 3 || (_homeTeam + _awayTeam) % 4 == 0;
+  }
+
+  bool get isB {
+    return (_homeTeam + _awayTeam) % 4 == 1 || (_homeTeam + _awayTeam) % 4 == 2;
+  }
+
 }
